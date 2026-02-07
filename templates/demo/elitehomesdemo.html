@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EliteHomes | Premium Real Estate Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#0b1120",
+            accent: "#d4af37",
+            soft: "#f8fafc",
+            muted: "#94a3b8"
+          },
+          boxShadow: {
+            soft: "0 20px 45px rgba(0,0,0,0.08)",
+            glass: "0 8px 32px rgba(0,0,0,0.15)",
+            deep: "0 30px 80px rgba(0,0,0,0.25)"
+          },
+          borderRadius: {
+            xl: "1.25rem",
+            xxl: "2rem"
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <!-- Global Styles -->
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    .glass {
+      backdrop-filter: blur(14px);
+      background: rgba(255,255,255,0.65);
+    }
+
+    .fade-up {
+      animation: fadeUp 1.2s ease both;
+    }
+
+    .fade-delay-1 { animation-delay: .2s; }
+    .fade-delay-2 { animation-delay: .4s; }
+    .fade-delay-3 { animation-delay: .6s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body class="bg-soft text-slate-800">
+
+<!-- ================= NAVBAR ================= -->
+<header class="fixed top-0 w-full z-50 glass shadow-glass">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <!-- LOGO -->
+    <div class="flex items-center space-x-2">
+      <div class="w-10 h-10 bg-primary text-white flex items-center justify-center rounded-xl font-black">EH</div>
+      <span class="text-xl font-black text-primary">EliteHomes</span>
+    </div>
+
+    <!-- MENU -->
+    <nav class="hidden lg:flex space-x-8 font-semibold">
+      <a href="#home" class="hover:text-accent">Home</a>
+   
+      <a href="#projects" class="hover:text-accent">Projects</a>
+      <a href="#agents" class="hover:text-accent">Agents</a>
+     
+      <a href="#contact" class="hover:text-accent">Contact</a>
+    </nav>
+
+
+
+
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="home" class="pt-36 pb-28 bg-gradient-to-br from-primary via-slate-900 to-black text-white relative overflow-hidden">
+
+  <!-- BACKGROUND SHAPES -->
+  <div class="absolute -top-20 -left-20 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-3xl"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+
+    <!-- TEXT -->
+    <div class="fade-up">
+      <h1 class="text-5xl xl:text-6xl font-black leading-tight">
+        Discover <span class="text-accent">Luxury Living</span><br>
+        Across India
+      </h1>
+
+      <p class="mt-6 text-lg text-slate-300 max-w-xl">
+        EliteHomes connects you with premium residential & commercial properties
+        backed by trusted developers and verified listings.
+      </p>
+
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="#properties" class="bg-accent text-primary px-8 py-4 rounded-xl font-bold shadow-deep">
+          Explore Properties
+        </a>
+        <a href="#contact" class="border border-white/30 px-8 py-4 rounded-xl">
+          Talk to Expert
+        </a>
+      </div>
+
+      <!-- STATS -->
+      <div class="mt-14 grid grid-cols-3 gap-6 text-center">
+        <div>
+          <h3 class="text-3xl font-black text-accent">12K+</h3>
+          <p class="text-sm text-muted">Listings</p>
+        </div>
+        <div>
+          <h3 class="text-3xl font-black text-accent">450+</h3>
+          <p class="text-sm text-muted">Projects</p>
+        </div>
+        <div>
+          <h3 class="text-3xl font-black text-accent">25+</h3>
+          <p class="text-sm text-muted">Cities</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="fade-up fade-delay-2">
+      <img
+        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+        class="rounded-xxl shadow-deep"
+        alt="Luxury Home">
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= END PART 1 ================= -->
+
+
+<!-- ================= PROPERTY SEARCH ================= -->
+<section id="properties" class="relative z-10 -mt-24">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- SEARCH BOX -->
+    <div class="bg-white rounded-xxl shadow-deep p-8 grid lg:grid-cols-5 gap-6">
+
+      <div>
+        <label class="text-sm font-semibold">City</label>
+        <select id="cityFilter" class="w-full mt-2 p-3 rounded-xl border">
+          <option value="">All Cities</option>
+          <option>Mumbai</option>
+          <option>Bangalore</option>
+          <option>Delhi</option>
+          <option>Pune</option>
+          <option>Hyderabad</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="text-sm font-semibold">Property Type</label>
+        <select id="typeFilter" class="w-full mt-2 p-3 rounded-xl border">
+          <option value="">All Types</option>
+          <option>Apartment</option>
+          <option>Villa</option>
+          <option>Commercial</option>
+          <option>Plot</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="text-sm font-semibold">Budget</label>
+        <select id="priceFilter" class="w-full mt-2 p-3 rounded-xl border">
+          <option value="">Any</option>
+          <option value="50">Below 50L</option>
+          <option value="100">50L – 1Cr</option>
+          <option value="200">1Cr – 2Cr</option>
+          <option value="500">2Cr+</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="text-sm font-semibold">Bedrooms</label>
+        <select id="bedFilter" class="w-full mt-2 p-3 rounded-xl border">
+          <option value="">Any</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4+</option>
+        </select>
+      </div>
+
+      <div class="flex items-end">
+        <button onclick="filterProperties()" class="w-full bg-primary text-white py-3 rounded-xl font-bold">
+          Search Properties
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROPERTY LIST ================= -->
+<section class="relative my-16 min-h-[300px] flex items-center justify-center">
+
+  <!-- BLUR OVERLAY -->
+  <div class="absolute inset-0 bg-white/90 backdrop-blur z-10"></div>
+
+  <!-- LOCK MESSAGE -->
+  <div class="relative z-20 text-center px-6">
+    <p class="text-xl font-bold text-gray-800">
+      🔒 Full section available after purchase
+    </p>
+    <p class="text-sm text-gray-600 mt-2">
+      Buy this template to unlock all sections and features.
+    </p>
+  </div>
+
+</section>
+
+
+<
+
+<!-- ================= END PART 2 ================= -->
+<!-- ================= PROPERTY CATEGORIES ================= -->
+<section class="bg-white py-28">
+  <section class="relative my-16 min-h-[300px] flex items-center justify-center">
+
+  <!-- BLUR OVERLAY -->
+  <div class="absolute inset-0 bg-white/90 backdrop-blur z-10"></div>
+
+  <!-- LOCK MESSAGE -->
+  <div class="relative z-20 text-center px-6">
+    <p class="text-xl font-bold text-gray-800">
+      🔒 Full section available after purchase
+    </p>
+    <p class="text-sm text-gray-600 mt-2">
+      Buy this template to unlock all sections and features.
+    </p>
+  </div>
+
+</section>
+
+</section>
+
+<!-- ================= CITY-WISE PROJECTS ================= -->
+<section id="projects" class="bg-soft py-28">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="flex justify-between items-center mb-14">
+      <h2 class="text-4xl font-black">Projects by City</h2>
+      <span class="text-muted">Top real estate destinations</span>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-12">
+
+      <div class="bg-white rounded-xxl shadow-soft p-8">
+        <h3 class="text-2xl font-bold">Mumbai</h3>
+        <ul class="mt-6 space-y-3 text-muted">
+          <li>• Sea-facing luxury projects</li>
+          <li>• Redevelopment towers</li>
+          <li>• High ROI investment zones</li>
+        </ul>
+      </div>
+
+      <div class="bg-white rounded-xxl shadow-soft p-8">
+        <h3 class="text-2xl font-bold">Bangalore</h3>
+        <ul class="mt-6 space-y-3 text-muted">
+          <li>• IT corridor apartments</li>
+          <li>• Gated communities</li>
+          <li>• Rental income hotspots</li>
+        </ul>
+      </div>
+
+      <div class="bg-white rounded-xxl shadow-soft p-8">
+        <h3 class="text-2xl font-bold">Delhi NCR</h3>
+        <ul class="mt-6 space-y-3 text-muted">
+          <li>• Commercial hubs</li>
+          <li>• Luxury villas</li>
+          <li>• Metro-connected projects</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= EMI CALCULATOR ================= -->
+<section class="bg-white py-28">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="text-center mb-14">
+      <h2 class="text-4xl font-black">EMI Calculator</h2>
+      <p class="text-muted mt-4">Plan your home loan smartly</p>
+    </div>
+
+    <div class="bg-soft rounded-xxl shadow-soft p-10 grid md:grid-cols-2 gap-10">
+
+      <!-- INPUTS -->
+      <div class="space-y-6">
+        <div>
+          <label class="font-semibold">Loan Amount (₹)</label>
+          <input id="loanAmount" type="number" value="5000000"
+                 class="w-full mt-2 p-3 rounded-xl border">
+        </div>
+
+        <div>
+          <label class="font-semibold">Interest Rate (%)</label>
+          <input id="interestRate" type="number" value="8.5"
+                 class="w-full mt-2 p-3 rounded-xl border">
+        </div>
+
+        <div>
+          <label class="font-semibold">Tenure (Years)</label>
+          <input id="loanTenure" type="number" value="20"
+                 class="w-full mt-2 p-3 rounded-xl border">
+        </div>
+
+        <button onclick="calculateEMI()"
+                class="bg-primary text-white py-3 rounded-xl font-bold w-full">
+          Calculate EMI
+        </button>
+      </div>
+
+      <!-- OUTPUT -->
+      <div class="bg-white rounded-xl p-8 shadow-soft">
+        <h3 class="text-xl font-bold mb-6">Loan Summary</h3>
+        <p class="text-muted mb-4">Monthly EMI</p>
+        <h4 id="emiResult" class="text-4xl font-black text-accent">₹0</h4>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= EMI SCRIPT ================= -->
+<script>
+  function calculateEMI() {
+    const P = document.getElementById("loanAmount").value;
+    const R = document.getElementById("interestRate").value / 12 / 100;
+    const N = document.getElementById("loanTenure").value * 12;
+
+    const EMI = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
+    document.getElementById("emiResult").innerText =
+      "₹" + Math.round(EMI).toLocaleString("en-IN");
+  }
+
+  calculateEMI();
+</script>
+
+<!-- ================= PROPERTY COMPARISON ================= -->
+<section class="bg-soft py-28">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <h2 class="text-4xl font-black text-center mb-16">
+      Property Comparison
+    </h2>
+
+    <div class="overflow-x-auto bg-white rounded-xxl shadow-soft">
+      <table class="min-w-full text-left">
+        <thead class="bg-primary text-white">
+          <tr>
+            <th class="p-4">Feature</th>
+            <th class="p-4">Luxury Villa</th>
+            <th class="p-4">Apartment</th>
+            <th class="p-4">Commercial</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b">
+            <td class="p-4 font-semibold">Price Range</td>
+            <td class="p-4">₹2Cr+</td>
+            <td class="p-4">₹50L–₹1.5Cr</td>
+            <td class="p-4">₹1Cr+</td>
+          </tr>
+          <tr class="border-b bg-soft">
+            <td class="p-4 font-semibold">Rental Yield</td>
+            <td class="p-4">Low</td>
+            <td class="p-4">Medium</td>
+            <td class="p-4">High</td>
+          </tr>
+          <tr>
+            <td class="p-4 font-semibold">Maintenance</td>
+            <td class="p-4">High</td>
+            <td class="p-4">Medium</td>
+            <td class="p-4">Low</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= END PART 3 ================= -->
+<!-- ================= SERVICES ================= -->
+<section class="bg-white py-28">
+  <section class="relative my-16 min-h-[300px] flex items-center justify-center">
+
+  <!-- BLUR OVERLAY -->
+  <div class="absolute inset-0 bg-white/90 backdrop-blur z-10"></div>
+
+  <!-- LOCK MESSAGE -->
+  <div class="relative z-20 text-center px-6">
+    <p class="text-xl font-bold text-gray-800">
+      🔒 Full section available after purchase
+    </p>
+    <p class="text-sm text-gray-600 mt-2">
+      Buy this template to unlock all sections and features.
+    </p>
+  </div>
+
+</section>
+
+</section>
+
+<!-- ================= WHY CHOOSE US ================= -->
+<section class="bg-primary text-white py-28">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <div>
+        <h2 class="text-4xl font-black mb-6">Why Choose EliteHomes</h2>
+        <p class="text-slate-300 mb-10">
+          We combine technology, market expertise, and transparency to deliver
+          unmatched real estate experiences.
+        </p>
+
+        <div class="grid grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-3xl font-black text-accent">10+</h3>
+            <p class="text-sm text-slate-300">Years Experience</p>
+          </div>
+          <div>
+            <h3 class="text-3xl font-black text-accent">12K+</h3>
+            <p class="text-sm text-slate-300">Happy Clients</p>
+          </div>
+          <div>
+            <h3 class="text-3xl font-black text-accent">₹8,000Cr+</h3>
+            <p class="text-sm text-slate-300">Deals Closed</p>
+          </div>
+          <div>
+            <h3 class="text-3xl font-black text-accent">99%</h3>
+            <p class="text-sm text-slate-300">Client Satisfaction</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white/10 rounded-xxl p-10 backdrop-blur">
+        <ul class="space-y-4">
+          <li>✔ Verified listings only</li>
+          <li>✔ Transparent pricing</li>
+          <li>✔ Dedicated relationship managers</li>
+          <li>✔ Pan-India presence</li>
+          <li>✔ End-to-end support</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= AGENTS DIRECTORY ================= -->
+<section id="agents" class="bg-white py-28">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-black">Meet Our Agents</h2>
+      <p class="text-muted mt-4">Trusted real estate professionals</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+      <div class="bg-soft rounded-xxl p-6 shadow-soft text-center">
+        <img src="https://randomuser.me/api/portraits/men/45.jpg"
+             class="w-28 h-28 mx-auto rounded-full mb-4">
+        <h3 class="font-bold">Rahul Mehta</h3>
+        <p class="text-muted text-sm">Luxury Specialist</p>
+      </div>
+
+      <div class="bg-soft rounded-xxl p-6 shadow-soft text-center">
+        <img src="https://randomuser.me/api/portraits/women/52.jpg"
+             class="w-28 h-28 mx-auto rounded-full mb-4">
+        <h3 class="font-bold">Ananya Singh</h3>
+        <p class="text-muted text-sm">Residential Expert</p>
+      </div>
+
+      <div class="bg-soft rounded-xxl p-6 shadow-soft text-center">
+        <img src="https://randomuser.me/api/portraits/men/68.jpg"
+             class="w-28 h-28 mx-auto rounded-full mb-4">
+        <h3 class="font-bold">Amit Verma</h3>
+        <p class="text-muted text-sm">Commercial Head</p>
+      </div>
+
+      <div class="bg-soft rounded-xxl p-6 shadow-soft text-center">
+        <img src="https://randomuser.me/api/portraits/women/21.jpg"
+             class="w-28 h-28 mx-auto rounded-full mb-4">
+        <h3 class="font-bold">Neha Kapoor</h3>
+        <p class="text-muted text-sm">Investment Advisor</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="bg-soft py-28">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+
+    <h2 class="text-4xl font-black mb-16">What Clients Say</h2>
+
+    <div class="grid md:grid-cols-3 gap-10">
+
+      <div class="bg-white rounded-xxl p-8 shadow-soft">
+        <p class="text-muted mb-4">
+          “EliteHomes helped me find the perfect villa in Mumbai. Smooth process
+          and complete transparency.”
+        </p>
+        <h4 class="font-bold">— Rakesh Shah</h4>
+      </div>
+
+      <div class="bg-white rounded-xxl p-8 shadow-soft">
+        <p class="text-muted mb-4">
+          “Very professional team. Their investment advice gave me excellent
+          returns.”
+        </p>
+        <h4 class="font-bold">— Priya Malhotra</h4>
+      </div>
+
+      <div class="bg-white rounded-xxl p-8 shadow-soft">
+        <p class="text-muted mb-4">
+          “Best real estate platform I’ve used. Highly recommended.”
+        </p>
+        <h4 class="font-bold">— Arjun Patel</h4>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= BLOGS ================= -->
+<section id="blogs" class="bg-white py-28">
+  <section class="relative my-16 min-h-[300px] flex items-center justify-center">
+
+  <!-- BLUR OVERLAY -->
+  <div class="absolute inset-0 bg-white/90 backdrop-blur z-10"></div>
+
+  <!-- LOCK MESSAGE -->
+  <div class="relative z-20 text-center px-6">
+    <p class="text-xl font-bold text-gray-800">
+      🔒 Full section available after purchase
+    </p>
+    <p class="text-sm text-gray-600 mt-2">
+      Buy this template to unlock all sections and features.
+    </p>
+  </div>
+
+</section>
+
+</section>
+
+<!-- ================= END PART 4 ================= -->
+
+
+
+<!-- ================= VIRTUAL TOURS ================= -->
+<section class="bg-white py-28">
+ <section class="relative my-16 min-h-[300px] flex items-center justify-center">
+
+  <!-- BLUR OVERLAY -->
+  <div class="absolute inset-0 bg-white/90 backdrop-blur z-10"></div>
+
+  <!-- LOCK MESSAGE -->
+  <div class="relative z-20 text-center px-6">
+    <p class="text-xl font-bold text-gray-800">
+      🔒 Full section available after purchase
+    </p>
+    <p class="text-sm text-gray-600 mt-2">
+      Buy this template to unlock all sections and features.
+    </p>
+  </div>
+
+</section>
+
+</section>
+
+<!-- ================= PROPERTY GALLERY ================= -->
+<section class="bg-soft py-28">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <h2 class="text-4xl font-black text-center mb-16">
+      Property Gallery
+    </h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <img onclick="openGallery(this.src)"
+           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+           class="rounded-xl cursor-pointer">
+      <img onclick="openGallery(this.src)"
+           src="https://images.unsplash.com/photo-1568605114967-8130f3a36994"
+           class="rounded-xl cursor-pointer">
+      <img onclick="openGallery(this.src)"
+           src="https://images.unsplash.com/photo-1599423300746-b62533397364"
+           class="rounded-xl cursor-pointer">
+      <img onclick="openGallery(this.src)"
+           src="https://images.unsplash.com/photo-1570129477492-45c003edd2be"
+           class="rounded-xl cursor-pointer">
+    </div>
+
+  </div>
+</section>
+
+<!-- GALLERY MODAL -->
+<div id="galleryModal"
+     class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+  <img id="galleryImg" class="max-h-[90vh] rounded-xxl shadow-deep">
+  <button onclick="closeGallery()"
+          class="absolute top-6 right-6 text-white text-3xl">✕</button>
+</div>
+
+<!-- ================= COMPARE PROPERTIES ================= -->
+<section class="bg-white py-28">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <h2 class="text-4xl font-black text-center mb-16">
+      Compare Properties
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <div class="bg-soft p-6 rounded-xxl shadow-soft">
+        <h3 class="font-bold mb-2">Luxury Villa</h3>
+        <ul class="text-sm text-muted space-y-1">
+          <li>₹2.5 Cr</li>
+          <li>4 BHK</li>
+          <li>Private Garden</li>
+          <li>High Maintenance</li>
+        </ul>
+      </div>
+
+      <div class="bg-soft p-6 rounded-xxl shadow-soft">
+        <h3 class="font-bold mb-2">Apartment</h3>
+        <ul class="text-sm text-muted space-y-1">
+          <li>₹95 Lakh</li>
+          <li>3 BHK</li>
+          <li>Gated Community</li>
+          <li>Medium Maintenance</li>
+        </ul>
+      </div>
+
+      <div class="bg-soft p-6 rounded-xxl shadow-soft">
+        <h3 class="font-bold mb-2">Commercial</h3>
+        <ul class="text-sm text-muted space-y-1">
+          <li>₹3.8 Cr</li>
+          <li>Office Space</li>
+          <li>High Rental Yield</li>
+          <li>Low Maintenance</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SAVE PROPERTY (LOCAL STORAGE) ================= -->
+<section class="bg-soft py-28">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+
+    <h2 class="text-4xl font-black mb-8">
+      Save Properties for Later
+    </h2>
+
+    <button onclick="saveProperty('Luxury Villa Mumbai')"
+            class="bg-primary text-white px-8 py-4 rounded-xl font-bold">
+      Save Sample Property
+    </button>
+
+    <p id="savedMsg" class="mt-6 text-muted"></p>
+
+  </div>
+</section>
+
+<!-- ================= BACK TO TOP ================= -->
+<button id="backToTop"
+        onclick="scrollToTop()"
+        class="hidden fixed bottom-24 right-6 bg-primary text-white w-12 h-12 rounded-full shadow-deep">
+  ↑
+</button>
+
+<!-- ================= PART 6 SCRIPTS ================= -->
+<script>
+  /* Gallery */
+  function openGallery(src) {
+    document.getElementById("galleryImg").src = src;
+    document.getElementById("galleryModal").classList.remove("hidden");
+    document.getElementById("galleryModal").classList.add("flex");
+  }
+
+  function closeGallery() {
+    document.getElementById("galleryModal").classList.add("hidden");
+    document.getElementById("galleryModal").classList.remove("flex");
+  }
+
+  /* Save Property */
+  function saveProperty(name) {
+    let saved = JSON.parse(localStorage.getItem("savedProps")) || [];
+    saved.push(name);
+    localStorage.setItem("savedProps", JSON.stringify(saved));
+    document.getElementById("savedMsg").innerText =
+      "Saved Properties: " + saved.join(", ");
+  }
+
+  /* Back to Top */
+  window.addEventListener("scroll", () => {
+    document.getElementById("backToTop").classList.toggle(
+      "hidden", window.scrollY < 400
+    );
+  });
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+</script>
+
+<!-- ================= END PART 6 ================= -->
+
+
+
+<!-- ================= FAQ SECTION ================= -->
+<section class="bg-soft py-28">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <h2 class="text-4xl font-black text-center mb-16">
+      Frequently Asked Questions
+    </h2>
+
+    <div class="space-y-6">
+
+      <div class="bg-white rounded-xxl shadow-soft p-6">
+        <button onclick="toggleFAQ(this)" class="w-full flex justify-between font-bold">
+          How do I book a property?
+          <span>+</span>
+        </button>
+        <p class="mt-4 text-muted hidden">
+          You can book a property by contacting our agents or submitting an inquiry
+          through the contact form. Our team will guide you end-to-end.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-xxl shadow-soft p-6">
+        <button onclick="toggleFAQ(this)" class="w-full flex justify-between font-bold">
+          Are all listings verified?
+          <span>+</span>
+        </button>
+        <p class="mt-4 text-muted hidden">
+          Yes, all properties listed on EliteHomes go through a strict verification
+          process including legal and ownership checks.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-xxl shadow-soft p-6">
+        <button onclick="toggleFAQ(this)" class="w-full flex justify-between font-bold">
+          Do you help with home loans?
+          <span>+</span>
+        </button>
+        <p class="mt-4 text-muted hidden">
+          We assist with home loans through our partner banks and NBFCs at competitive
+          interest rates.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT SECTION ================= -->
+<section id="contact" class="bg-primary text-white py-28">
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
+
+    <div>
+      <h2 class="text-4xl font-black mb-6">Get in Touch</h2>
+      <p class="text-slate-300 mb-10">
+        Looking to buy, sell, or invest? Our experts are here to help.
+      </p>
+
+      <ul class="space-y-4 text-slate-300">
+        <li>📍 Mumbai • Bangalore • Delhi • Pune</li>
+        <li>📞 +91 90000 00000</li>
+        <li>✉️ contact@elitehomes.com</li>
+      </ul>
+    </div>
+
+    <form class="bg-white rounded-xxl p-8 shadow-soft text-slate-800">
+      <input class="w-full mb-4 p-3 border rounded-xl" placeholder="Full Name">
+      <input class="w-full mb-4 p-3 border rounded-xl" placeholder="Email">
+      <input class="w-full mb-4 p-3 border rounded-xl" placeholder="Phone">
+      <textarea class="w-full mb-4 p-3 border rounded-xl" rows="4"
+                placeholder="Your Message"></textarea>
+      <button class="bg-primary text-white py-3 rounded-xl w-full font-bold">
+        Submit Inquiry
+      </button>
+    </form>
+
+  </div>
+</section>
+
+<!-- ================= MAP ================= -->
+<section class="bg-white py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <iframe
+      class="w-full h-[400px] rounded-xxl shadow-soft"
+      src="https://www.google.com/maps?q=Mumbai&output=embed"
+      loading="lazy">
+    </iframe>
+  </div>
+</section>
+
+<!-- ================= WHATSAPP FLOAT ================= -->
+<section class="relative my-16 min-h-[300px] flex items-center justify-center">
+
+  <!-- BLUR OVERLAY -->
+  <div class="absolute inset-0 bg-white/90 backdrop-blur z-10"></div>
+
+  <!-- LOCK MESSAGE -->
+  <div class="relative z-20 text-center px-6">
+    <p class="text-xl font-bold text-gray-800">
+      🔒 Full section available after purchase
+    </p>
+    <p class="text-sm text-gray-600 mt-2">
+      Buy this template to unlock all sections and features.
+    </p>
+  </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-slate-900 text-slate-400 py-20">
+  <section class="relative my-16 min-h-[300px] flex items-center justify-center">
+
+  <!-- BLUR OVERLAY -->
+  <div class="absolute inset-0 bg-white/90 backdrop-blur z-10"></div>
+
+  <!-- LOCK MESSAGE -->
+  <div class="relative z-20 text-center px-6">
+    <p class="text-xl font-bold text-gray-800">
+      🔒 Full section available after purchase
+    </p>
+    <p class="text-sm text-gray-600 mt-2">
+      Buy this template to unlock all sections and features.
+    </p>
+  </div>
+
+</section>
+
+</footer>
+
+<!-- ================= FAQ SCRIPT ================= -->
+<script>
+  function toggleFAQ(btn) {
+    const content = btn.nextElementSibling;
+    const icon = btn.querySelector("span");
+    content.classList.toggle("hidden");
+    icon.innerText = content.classList.contains("hidden") ? "+" : "−";
+  }
+</script>
+
+<!-- ================= END PART 5 ================= -->
+
+<script>
+  feather.replace();
+</script>
+
+<div class="fixed bottom-3 right-3 text-xs text-gray-400 opacity-70">
+  Demo Version • Neurix Templates
+</div>
+
+<script>
+document.addEventListener("contextmenu", e => e.preventDefault());
+document.addEventListener("keydown", e => {
+  if (e.ctrlKey && ["u","s","c"].includes(e.key.toLowerCase())) {
+    e.preventDefault();
+  }
+});
+</script>
+
+
+</body>
+</html>
