@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neurix – Digital & Web Solutions</title>
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { inter: ['Inter'] }
+    }
+  }
+}
+</script>
+
+<style>
+body { font-family: Inter }
+
+/* ===== SMOOTH LIGHT BACKGROUND ===== */
+.bg-soft {
+  background: linear-gradient(120deg,#f8fafc,#eef2ff,#f0fdf4,#fafafa);
+  background-size: 400% 400%;
+  animation: bgMove 20s ease infinite;
+}
+@keyframes bgMove {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* ===== PARTICLE CANVAS ===== */
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+</style>
+</head>
+
+<body class="bg-soft text-gray-800 overflow-x-hidden">
+
+<!-- PARTICLE BACKGROUND -->
+<canvas id="particles"></canvas>
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+    <h1 class="text-2xl font-black text-indigo-600">Neurix</h1>
+    <ul class="hidden md:flex gap-8 text-sm font-medium">
+      <li><a href="#home" class="hover:text-indigo-600">Home</a></li>
+      <li><a href="#services" class="hover:text-indigo-600">Services</a></li>
+      <li><a href="#work" class="hover:text-indigo-600">Work</a></li>
+      <li><a href="#contact" class="hover:text-indigo-600">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="pt-40 pb-36">
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+    <div>
+      <h2 class="text-5xl lg:text-6xl font-black leading-tight">
+        We Build <span class="text-indigo-600">High-Quality</span><br>
+        Digital Experiences
+      </h2>
+      <p class="mt-6 text-lg text-gray-600 max-w-xl">
+        Neurix is a GST & MSME registered digital agency delivering
+        modern websites, scalable systems and smooth user experiences.
+      </p>
+
+      <div class="mt-8 flex gap-4 flex-wrap">
+        <a href="#contact"
+           class="px-8 py-4 rounded-full bg-indigo-600 text-white font-semibold hover:scale-105 transition">
+          Get Started
+        </a>
+        <a href="https://wa.me/916398528280"
+           class="px-8 py-4 rounded-full border border-gray-300 hover:bg-gray-100 transition">
+          WhatsApp
+        </a>
+      </div>
+
+      <div class="mt-10 flex gap-6 text-sm text-gray-500">
+        <span>✔ GST Registered</span>
+        <span>✔ MSME Certified</span>
+        <span>✔ 50+ Projects</span>
+      </div>
+    </div>
+
+    <div>
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+           class="rounded-3xl shadow-2xl">
+    </div>
+  </div>
+</section>
+
+<!-- PARTICLE JS -->
+<script>
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+let w, h;
+function resize() {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+const dots = Array.from({length: 90}, () => ({
+  x: Math.random()*w,
+  y: Math.random()*h,
+  vx: (Math.random()-0.5)*0.4,
+  vy: (Math.random()-0.5)*0.4
+}));
+
+function animate() {
+  ctx.clearRect(0,0,w,h);
+  dots.forEach((d,i)=>{
+    d.x+=d.vx; d.y+=d.vy;
+    if(d.x<0||d.x>w) d.vx*=-1;
+    if(d.y<0||d.y>h) d.vy*=-1;
+
+    ctx.fillStyle="rgba(99,102,241,.6)";
+    ctx.beginPath();
+    ctx.arc(d.x,d.y,2,0,Math.PI*2);
+    ctx.fill();
+
+    for(let j=i+1;j<dots.length;j++){
+      const d2=dots[j];
+      const dist=Math.hypot(d.x-d2.x,d.y-d2.y);
+      if(dist<130){
+        ctx.strokeStyle="rgba(99,102,241,.15)";
+        ctx.beginPath();
+        ctx.moveTo(d.x,d.y);
+        ctx.lineTo(d2.x,d2.y);
+        ctx.stroke();
+      }
+    }
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+<!-- PART 1 END -->
+
+
+<!-- ===================== PART 2 START ===================== -->
+
+<!-- SERVICES -->
+<section id="services" class="py-36 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <h2 class="text-4xl lg:text-5xl font-black text-center mb-6">
+      Our Services
+    </h2>
+    <p class="text-center text-gray-600 max-w-3xl mx-auto mb-20">
+      We provide end-to-end digital solutions for businesses of all sizes.
+      From idea to launch, we focus on performance, design and scalability.
+    </p>
+
+    <!-- SERVICES GRID -->
+    <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-12">
+
+      <!-- CARD -->
+      <div class="group bg-gray-50 rounded-3xl shadow hover:shadow-2xl transition overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+             class="h-56 w-full object-cover group-hover:scale-110 transition duration-700">
+        <div class="p-10">
+          <h3 class="text-xl font-bold mb-4">Website Development</h3>
+          <p class="text-gray-600 leading-relaxed">
+            High-performance websites built using modern technologies.
+            Optimized for speed, SEO and conversions.
+          </p>
+          <ul class="mt-6 space-y-2 text-sm text-gray-500">
+            <li>✔ Business Websites</li>
+            <li>✔ Corporate Portals</li>
+            <li>✔ Landing Pages</li>
+            <li>✔ Admin Panels</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CARD -->
+      <div class="group bg-gray-50 rounded-3xl shadow hover:shadow-2xl transition overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d"
+             class="h-56 w-full object-cover group-hover:scale-110 transition duration-700">
+        <div class="p-10">
+          <h3 class="text-xl font-bold mb-4">UI / UX Design</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Clean, intuitive and user-friendly designs that
+            enhance engagement and trust.
+          </p>
+          <ul class="mt-6 space-y-2 text-sm text-gray-500">
+            <li>✔ Wireframing</li>
+            <li>✔ Prototyping</li>
+            <li>✔ Design Systems</li>
+            <li>✔ Conversion Optimization</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CARD -->
+      <div class="group bg-gray-50 rounded-3xl shadow hover:shadow-2xl transition overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692"
+             class="h-56 w-full object-cover group-hover:scale-110 transition duration-700">
+        <div class="p-10">
+          <h3 class="text-xl font-bold mb-4">Custom Software</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Scalable custom software solutions built to solve
+            real business problems.
+          </p>
+          <ul class="mt-6 space-y-2 text-sm text-gray-500">
+            <li>✔ CRM / ERP</li>
+            <li>✔ Dashboards</li>
+            <li>✔ Automation Tools</li>
+            <li>✔ APIs & Integrations</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CARD -->
+      <div class="group bg-gray-50 rounded-3xl shadow hover:shadow-2xl transition overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4"
+             class="h-56 w-full object-cover group-hover:scale-110 transition duration-700">
+        <div class="p-10">
+          <h3 class="text-xl font-bold mb-4">E-Commerce Solutions</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Powerful e-commerce platforms that drive sales
+            and provide smooth user journeys.
+          </p>
+          <ul class="mt-6 space-y-2 text-sm text-gray-500">
+            <li>✔ Product Management</li>
+            <li>✔ Payment Integration</li>
+            <li>✔ Order Tracking</li>
+            <li>✔ Admin Dashboard</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CARD -->
+      <div class="group bg-gray-50 rounded-3xl shadow hover:shadow-2xl transition overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7"
+             class="h-56 w-full object-cover group-hover:scale-110 transition duration-700">
+        <div class="p-10">
+          <h3 class="text-xl font-bold mb-4">Maintenance & Support</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Continuous monitoring, updates and improvements
+            to keep your systems running smoothly.
+          </p>
+          <ul class="mt-6 space-y-2 text-sm text-gray-500">
+            <li>✔ Bug Fixes</li>
+            <li>✔ Performance Optimization</li>
+            <li>✔ Security Updates</li>
+            <li>✔ 24/7 Support</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CARD -->
+      <div class="group bg-gray-50 rounded-3xl shadow hover:shadow-2xl transition overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d"
+             class="h-56 w-full object-cover group-hover:scale-110 transition duration-700">
+        <div class="p-10">
+          <h3 class="text-xl font-bold mb-4">SEO & Optimization</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Websites optimized for search engines and fast loading
+            to improve visibility and performance.
+          </p>
+          <ul class="mt-6 space-y-2 text-sm text-gray-500">
+            <li>✔ Technical SEO</li>
+            <li>✔ Page Speed</li>
+            <li>✔ On-page SEO</li>
+            <li>✔ Analytics Setup</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== WEBSITE TEMPLATES SECTION ===================== -->
+<section class="py-36 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center mb-16">
+      <span class="inline-block mb-4 px-4 py-1 text-sm bg-indigo-100 text-indigo-600 rounded-full">
+        New
+      </span>
+      <h2 class="text-4xl lg:text-5xl font-black mb-4">
+        Website Templates
+      </h2>
+      <p class="text-gray-600 max-w-3xl mx-auto">
+        Ready-to-use, modern website templates built with clean UI,
+        animations and responsive design.
+      </p>
+    </div>
+
+    <!-- TEMPLATE PREVIEW GRID -->
+    <div class="grid md:grid-cols-3 gap-12">
+
+      <!-- TEMPLATE CARD -->
+      <div class="bg-white rounded-3xl shadow hover:shadow-xl transition overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+             class="h-56 w-full object-cover">
+        <div class="p-8">
+          <h3 class="font-bold text-lg mb-2">Business Website</h3>
+          <p class="text-sm text-gray-600 mb-4">
+            Clean corporate template for agencies & companies.
+          </p>
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-indigo-600">₹999</span>
+            <a href="templates.html"
+               class="text-sm font-semibold text-indigo-600 hover:underline">
+              View →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl shadow hover:shadow-xl transition overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+             class="h-56 w-full object-cover">
+        <div class="p-8">
+          <h3 class="font-bold text-lg mb-2">Portfolio Template</h3>
+          <p class="text-sm text-gray-600 mb-4">
+            Personal portfolio for developers & designers.
+          </p>
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-indigo-600">₹799</span>
+            <a href="templates.html"
+               class="text-sm font-semibold text-indigo-600 hover:underline">
+              View →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-3xl shadow hover:shadow-xl transition overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231"
+             class="h-56 w-full object-cover">
+        <div class="p-8">
+          <h3 class="font-bold text-lg mb-2">Landing Page</h3>
+          <p class="text-sm text-gray-600 mb-4">
+            High-conversion landing page template.
+          </p>
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-indigo-600">₹599</span>
+            <a href="templates.html"
+               class="text-sm font-semibold text-indigo-600 hover:underline">
+              View →
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- VIEW ALL -->
+    <div class="text-center mt-16">
+      <a href="templates.html"
+         class="inline-block px-10 py-4 bg-indigo-600 text-white rounded-full font-semibold hover:scale-105 transition">
+        View All Templates
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<section class="py-36 bg-white">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <h2 class="text-4xl font-black mb-6">
+      AI Website Planner
+    </h2>
+    <p class="text-gray-600 mb-10">
+      Describe your business and get an instant website plan.
+    </p>
+
+    <textarea id="aiInput"
+      placeholder="Example: I have a real estate business in Delhi"
+      class="w-full border rounded-2xl px-6 py-4 mb-6 focus:ring-2 focus:ring-indigo-600">
+    </textarea>
+
+    <button onclick="generatePlan()"
+      class="px-10 py-4 bg-indigo-600 text-white rounded-full font-semibold">
+      Generate Plan
+    </button>
+
+    <div id="aiOutput"
+      class="mt-10 hidden text-left bg-gray-50 p-8 rounded-2xl">
+    </div>
+  </div>
+</section>
+
+
+<script>
+function generatePlan() {
+  const inputRaw = document.getElementById("aiInput").value.trim();
+  const text = inputRaw.toLowerCase();
+  const output = document.getElementById("aiOutput");
+
+  if (!inputRaw) {
+    output.innerHTML = "❗ Please describe your business or idea.";
+    output.classList.remove("hidden");
+    return;
+  }
+
+  // ---------- INTENT SCORES ----------
+  const score = {
+    ecommerce: 0,
+    booking: 0,
+    content: 0,
+    portfolio: 0,
+    platform: 0,
+    business: 0
+  };
+
+  // ---------- INTENT SIGNALS ----------
+  if (/(sell|selling|product|order|payment|cart|price)/.test(text)) score.ecommerce += 3;
+  if (/(book|appointment|schedule|reservation|slot)/.test(text)) score.booking += 3;
+  if (/(blog|article|news|content|write)/.test(text)) score.content += 3;
+  if (/(portfolio|showcase|work|projects|profile)/.test(text)) score.portfolio += 3;
+  if (/(platform|system|dashboard|users|login)/.test(text)) score.platform += 3;
+  if (/(company|business|service|agency|firm)/.test(text)) score.business += 2;
+
+  // ---------- WEBSITE TYPE DECISION ----------
+  let siteType = "Business Website";
+  let pages = 4;
+  let basePrice = 8000;
+  let features = ["Responsive design", "Contact form"];
+  let timeline = 7;
+  let reason = [];
+
+  const maxIntent = Object.keys(score).reduce((a, b) =>
+    score[a] > score[b] ? a : b
+  );
+
+  switch (maxIntent) {
+    case "ecommerce":
+      siteType = "E-commerce Website";
+      pages = 6;
+      basePrice += 14000;
+      timeline += 7;
+      features.push("Product catalog", "Payments", "Order management");
+      reason.push("Detected selling & payment intent");
+      break;
+
+    case "booking":
+      siteType = "Service Booking Website";
+      pages = 5;
+      basePrice += 10000;
+      timeline += 5;
+      features.push("Booking system", "Calendar", "Notifications");
+      reason.push("Detected booking / appointment intent");
+      break;
+
+    case "content":
+      siteType = "Blog / Content Website";
+      pages = 5;
+      basePrice += 3000;
+      features.push("Blog system", "SEO friendly");
+      reason.push("Detected content publishing intent");
+      break;
+
+    case "portfolio":
+      siteType = "Portfolio Website";
+      pages = 3;
+      basePrice += 2000;
+      features.push("Project showcase", "Gallery");
+      reason.push("Detected personal / work showcase intent");
+      break;
+
+    case "platform":
+      siteType = "Web Application / Platform";
+      pages = 7;
+      basePrice += 18000;
+      timeline += 10;
+      features.push("User login", "Dashboard", "Admin panel");
+      reason.push("Detected system / platform intent");
+      break;
+
+    default:
+      siteType = "Business / Corporate Website";
+      pages = 4;
+      basePrice += 4000;
+      features.push("Services pages", "WhatsApp integration");
+      reason.push("Detected general business intent");
+  }
+
+  // ---------- EXTRA LOGIC ----------
+  if (/(animation|interactive|modern)/.test(text)) {
+    basePrice += 3000;
+    features.push("Advanced animations");
+    reason.push("Requested modern UI");
+  }
+
+  if (/(urgent|asap|fast)/.test(text)) {
+    basePrice += 2500;
+    timeline -= 2;
+    reason.push("Urgent delivery");
+  }
+
+  const pageMatch = text.match(/(\d+)\s*(page|pages)/);
+  if (pageMatch) {
+    const requested = parseInt(pageMatch[1]);
+    if (requested > pages) {
+      basePrice += (requested - pages) * 1200;
+      pages = requested;
+      reason.push("Extra pages requested");
+    }
+  }
+
+  if (basePrice < 7000) basePrice = 7000;
+
+  const minPrice = basePrice;
+  const maxPrice = Math.round(basePrice * 1.25);
+
+  // ---------- OUTPUT ----------
+  output.innerHTML = `
+    <h3 class="font-bold text-xl mb-3">🤖 Recommended Website Type</h3>
+
+    <p class="mb-4 text-gray-600">
+      Based on your description:<br>
+      <em>"${inputRaw}"</em>
+    </p>
+
+    <ul class="list-disc pl-6 space-y-2 mb-4">
+      <li><strong>Website Type:</strong> ${siteType}</li>
+      <li><strong>Pages:</strong> ${pages}</li>
+      <li><strong>Features:</strong> ${features.join(", ")}</li>
+      <li><strong>Timeline:</strong> ${timeline}–${timeline + 3} days</li>
+      <li class="font-semibold text-indigo-600">
+        Estimated Cost: ₹${minPrice.toLocaleString()} – ₹${maxPrice.toLocaleString()}
+      </li>
+    </ul>
+
+    <div class="bg-gray-50 p-4 rounded-xl text-sm text-gray-600">
+      <strong>Why this recommendation?</strong>
+      <ul class="list-disc pl-5 mt-2">
+        ${reason.map(r => `<li>${r}</li>`).join("")}
+      </ul>
+    </div>
+
+    <div class="mt-6">
+      <a href="#contact"
+        class="inline-block px-6 py-3 bg-indigo-600 text-white rounded-full font-semibold">
+        Proceed with this Plan
+      </a>
+    </div>
+  `;
+
+  output.classList.remove("hidden");
+}
+</script>
+
+<!-- WORK / PORTFOLIO -->
+<section id="work" class="py-36 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <h2 class="text-4xl lg:text-5xl font-black text-center mb-6">
+      Our Work
+    </h2>
+    <p class="text-center text-gray-600 max-w-3xl mx-auto mb-20">
+      A selection of projects we’ve delivered for startups,
+      enterprises and growing businesses.
+    </p>
+
+    <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-12">
+
+      <div class="group bg-white rounded-3xl shadow overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216"
+             class="h-72 w-full object-cover group-hover:scale-110 transition duration-700">
+        <div class="p-8">
+          <h3 class="font-bold text-lg">Corporate Website</h3>
+          <p class="text-gray-600 text-sm">Branding & Development</p>
+        </div>
+      </div>
+
+      <div class="group bg-white rounded-3xl shadow overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231"
+             class="h-72 w-full object-cover group-hover:scale-110 transition duration-700">
+        <div class="p-8">
+          <h3 class="font-bold text-lg">Startup Platform</h3>
+          <p class="text-gray-600 text-sm">UI / UX & SaaS</p>
+        </div>
+      </div>
+
+      <div class="group bg-white rounded-3xl shadow overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+             class="h-72 w-full object-cover group-hover:scale-110 transition duration-700">
+        <div class="p-8">
+          <h3 class="font-bold text-lg">E-Commerce Store</h3>
+          <p class="text-gray-600 text-sm">Online Retail</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PART 2 END ===================== -->
+
+
+<!-- ===================== PART 3 START ===================== -->
+
+<!-- ABOUT US -->
+<section id="about" class="py-36 bg-white">
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+
+    <div>
+      <h2 class="text-4xl lg:text-5xl font-black mb-8">
+        About <span class="text-indigo-600">Neurix</span>
+      </h2>
+
+      <p class="text-gray-600 leading-relaxed mb-6">
+        Neurix is a modern digital and website development agency focused on
+        building scalable, secure and visually appealing digital products.
+        We help businesses establish a strong online presence through
+        thoughtful design and robust engineering.
+      </p>
+
+      <p class="text-gray-600 leading-relaxed mb-6">
+        As a <strong>GST & MSME registered company</strong>, we follow professional
+        standards, transparent processes and long-term partnerships.
+        Our goal is not just to deliver a website, but to create a digital
+        foundation that grows with your business.
+      </p>
+
+      <p class="text-gray-600 leading-relaxed">
+        From startups to established enterprises, we bring clarity,
+        innovation and reliability to every project we work on.
+      </p>
+    </div>
+
+    <div class="bg-gray-50 rounded-3xl p-12 shadow-lg">
+      <h3 class="text-2xl font-bold mb-6">Our Vision</h3>
+      <p class="text-gray-600 mb-6">
+        To become a trusted technology partner for businesses by delivering
+        high-quality digital solutions that drive growth and efficiency.
+      </p>
+
+      <h3 class="text-2xl font-bold mb-6">Our Mission</h3>
+      <p class="text-gray-600">
+        To combine design, technology and strategy to build digital
+        experiences that are simple, scalable and impactful.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="py-36 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <h2 class="text-4xl lg:text-5xl font-black text-center mb-20">
+      Our Process
+    </h2>
+
+    <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-12">
+
+      <div class="bg-white p-10 rounded-3xl shadow">
+        <span class="text-indigo-600 font-black text-3xl">01</span>
+        <h3 class="font-bold text-xl mt-4 mb-2">Discovery</h3>
+        <p class="text-gray-600">
+          Understanding your business goals, audience and technical needs.
+        </p>
+      </div>
+
+      <div class="bg-white p-10 rounded-3xl shadow">
+        <span class="text-indigo-600 font-black text-3xl">02</span>
+        <h3 class="font-bold text-xl mt-4 mb-2">Design</h3>
+        <p class="text-gray-600">
+          Creating wireframes, UI designs and user experiences.
+        </p>
+      </div>
+
+      <div class="bg-white p-10 rounded-3xl shadow">
+        <span class="text-indigo-600 font-black text-3xl">03</span>
+        <h3 class="font-bold text-xl mt-4 mb-2">Development</h3>
+        <p class="text-gray-600">
+          Building scalable and secure solutions using modern technologies.
+        </p>
+      </div>
+
+      <div class="bg-white p-10 rounded-3xl shadow">
+        <span class="text-indigo-600 font-black text-3xl">04</span>
+        <h3 class="font-bold text-xl mt-4 mb-2">Launch & Support</h3>
+        <p class="text-gray-600">
+          Testing, deployment and continuous support post-launch.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="py-36 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="grid md:grid-cols-4 gap-12 text-center">
+      <div>
+        <h3 class="text-5xl font-black text-indigo-600">50+</h3>
+        <p class="text-gray-600 mt-2">Projects Delivered</p>
+      </div>
+      <div>
+        <h3 class="text-5xl font-black text-indigo-600">30+</h3>
+        <p class="text-gray-600 mt-2">Happy Clients</p>
+      </div>
+      <div>
+        <h3 class="text-5xl font-black text-indigo-600">5+</h3>
+        <p class="text-gray-600 mt-2">Years Experience</p>
+      </div>
+      <div>
+        <h3 class="text-5xl font-black text-indigo-600">100%</h3>
+        <p class="text-gray-600 mt-2">Client Satisfaction</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section class="py-36 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+
+    <h2 class="text-4xl lg:text-5xl font-black mb-16">
+      Technology Stack
+    </h2>
+
+    <div class="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-10">
+
+      <div class="bg-white p-8 rounded-2xl shadow font-semibold">HTML5</div>
+      <div class="bg-white p-8 rounded-2xl shadow font-semibold">CSS3</div>
+      <div class="bg-white p-8 rounded-2xl shadow font-semibold">Tailwind CSS</div>
+      <div class="bg-white p-8 rounded-2xl shadow font-semibold">JavaScript</div>
+      <div class="bg-white p-8 rounded-2xl shadow font-semibold">React.js</div>
+
+      <div class="bg-white p-8 rounded-2xl shadow font-semibold">Spring Boot</div>
+      <div class="bg-white p-8 rounded-2xl shadow font-semibold">Node.js</div>
+      <div class="bg-white p-8 rounded-2xl shadow font-semibold">PostgreSQL</div>
+      <div class="bg-white p-8 rounded-2xl shadow font-semibold">MySQL</div>
+      <div class="bg-white p-8 rounded-2xl shadow font-semibold">MongoDB</div>
+
+      <div class="bg-white p-8 rounded-2xl shadow font-semibold">AWS</div>
+      <div class="bg-white p-8 rounded-2xl shadow font-semibold">Docker</div>
+      <div class="bg-white p-8 rounded-2xl shadow font-semibold">Git & GitHub</div>
+      <div class="bg-white p-8 rounded-2xl shadow font-semibold">CI / CD</div>
+      <div class="bg-white p-8 rounded-2xl shadow font-semibold">Netlify / Vercel</div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PART 3 END ===================== -->
+
+
+<!-- ===================== PART 4 START ===================== -->
+
+<!-- TRUSTED BY / CLIENT LOGOS -->
+<section class="py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h2 class="text-3xl lg:text-4xl font-black mb-14">
+      Trusted by Businesses
+    </h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-10 items-center opacity-70">
+      <div class="font-bold">StartupX</div>
+      <div class="font-bold">RealEstatePro</div>
+      <div class="font-bold">FinServe</div>
+      <div class="font-bold">EduTech</div>
+      <div class="font-bold">RetailHub</div>
+      <div class="font-bold">HealthPlus</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="py-36 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <h2 class="text-4xl lg:text-5xl font-black text-center mb-20">
+      What Our Clients Say
+    </h2>
+
+    <div class="relative overflow-hidden">
+
+      <!-- SLIDER -->
+      <div id="testimonialSlider" class="flex transition-transform duration-700">
+
+        <!-- ITEM -->
+        <div class="min-w-full px-6">
+          <div class="bg-white p-12 rounded-3xl shadow max-w-3xl mx-auto text-center">
+            <p class="text-gray-600 text-lg leading-relaxed">
+              “Neurix delivered a high-quality website exactly as promised.
+              The design, speed and professionalism exceeded our expectations.”
+            </p>
+            <h4 class="mt-6 font-bold text-lg">Rahul Sharma</h4>
+            <span class="text-sm text-gray-500">Business Owner</span>
+          </div>
+        </div>
+
+        <div class="min-w-full px-6">
+          <div class="bg-white p-12 rounded-3xl shadow max-w-3xl mx-auto text-center">
+            <p class="text-gray-600 text-lg leading-relaxed">
+              “Very smooth process from start to finish.
+              Great communication and excellent technical skills.”
+            </p>
+            <h4 class="mt-6 font-bold text-lg">Anita Verma</h4>
+            <span class="text-sm text-gray-500">Startup Founder</span>
+          </div>
+        </div>
+
+        <div class="min-w-full px-6">
+          <div class="bg-white p-12 rounded-3xl shadow max-w-3xl mx-auto text-center">
+            <p class="text-gray-600 text-lg leading-relaxed">
+              “Our website performance improved drastically.
+              Highly recommend Neurix for professional development work.”
+            </p>
+            <h4 class="mt-6 font-bold text-lg">Mohit Gupta</h4>
+            <span class="text-sm text-gray-500">Real Estate Consultant</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CONTROLS -->
+      <div class="flex justify-center gap-4 mt-10">
+        <button onclick="prevTestimonial()" class="px-4 py-2 bg-white shadow rounded-full">◀</button>
+        <button onclick="nextTestimonial()" class="px-4 py-2 bg-white shadow rounded-full">▶</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="py-36 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <h2 class="text-4xl lg:text-5xl font-black text-center mb-20">
+      Industries We Serve
+    </h2>
+
+    <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-12">
+
+      <div class="p-10 bg-gray-50 rounded-3xl shadow">
+        <h3 class="font-bold text-xl mb-3">Startups</h3>
+        <p class="text-gray-600">MVPs, landing pages and scalable platforms.</p>
+      </div>
+
+      <div class="p-10 bg-gray-50 rounded-3xl shadow">
+        <h3 class="font-bold text-xl mb-3">Real Estate</h3>
+        <p class="text-gray-600">Property listings, CRM and lead management.</p>
+      </div>
+
+      <div class="p-10 bg-gray-50 rounded-3xl shadow">
+        <h3 class="font-bold text-xl mb-3">E-Commerce</h3>
+        <p class="text-gray-600">Online stores, payment systems and analytics.</p>
+      </div>
+
+      <div class="p-10 bg-gray-50 rounded-3xl shadow">
+        <h3 class="font-bold text-xl mb-3">Education</h3>
+        <p class="text-gray-600">Learning platforms, portals and dashboards.</p>
+      </div>
+
+      <div class="p-10 bg-gray-50 rounded-3xl shadow">
+        <h3 class="font-bold text-xl mb-3">Healthcare</h3>
+        <p class="text-gray-600">Appointment systems and patient portals.</p>
+      </div>
+
+      <div class="p-10 bg-gray-50 rounded-3xl shadow">
+        <h3 class="font-bold text-xl mb-3">Finance</h3>
+        <p class="text-gray-600">Secure dashboards and fintech platforms.</p>
+      </div>
+
+      <div class="p-10 bg-gray-50 rounded-3xl shadow">
+        <h3 class="font-bold text-xl mb-3">Manufacturing</h3>
+        <p class="text-gray-600">ERP, automation and reporting tools.</p>
+      </div>
+
+      <div class="p-10 bg-gray-50 rounded-3xl shadow">
+        <h3 class="font-bold text-xl mb-3">Service Businesses</h3>
+        <p class="text-gray-600">Booking systems and client management.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL SLIDER JS -->
+<script>
+let currentTestimonial = 0;
+const slider = document.getElementById("testimonialSlider");
+const totalSlides = slider.children.length;
+
+function updateSlider() {
+  slider.style.transform = `translateX(-${currentTestimonial * 100}%)`;
+}
+
+function nextTestimonial() {
+  currentTestimonial = (currentTestimonial + 1) % totalSlides;
+  updateSlider();
+}
+
+function prevTestimonial() {
+  currentTestimonial = (currentTestimonial - 1 + totalSlides) % totalSlides;
+  updateSlider();
+}
+
+setInterval(nextTestimonial, 6000);
+</script>
+
+<!-- ===================== PART 4 END ===================== -->
+
+
+<!-- ===================== PART 5 START ===================== -->
+
+<!-- PRICING -->
+<section class="py-36 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <h2 class="text-4xl lg:text-5xl font-black text-center mb-6">
+      Pricing Plans
+    </h2>
+    <p class="text-center text-gray-600 max-w-3xl mx-auto mb-20">
+      Transparent pricing designed for startups, growing businesses
+      and enterprises. No hidden costs.
+    </p>
+
+    <div class="grid lg:grid-cols-3 gap-12">
+
+      <!-- BASIC -->
+      <div class="bg-white rounded-3xl shadow-xl p-12 border">
+        <h3 class="text-2xl font-bold mb-4">Basic</h3>
+        <p class="text-gray-600 mb-6">Perfect for small businesses</p>
+        <div class="text-4xl font-black mb-6">₹9,999</div>
+
+        <ul class="space-y-3 text-gray-600 mb-10">
+          <li>✔ 5 Pages Website</li>
+          <li>✔ Mobile Responsive</li>
+          <li>✔ Contact Form</li>
+          <li>✔ Basic SEO</li>
+          <li>✔ 1 Month Support</li>
+        </ul>
+
+        <a href="#contact"
+           class="block text-center px-8 py-4 rounded-full bg-indigo-600 text-white font-semibold hover:scale-105 transition">
+          Get Started
+        </a>
+      </div>
+
+      <!-- STANDARD -->
+      <div class="bg-indigo-600 text-white rounded-3xl shadow-2xl p-12 scale-105">
+        <h3 class="text-2xl font-bold mb-4">Standard</h3>
+        <p class="opacity-90 mb-6">Best for growing businesses</p>
+        <div class="text-4xl font-black mb-6">₹19,999</div>
+
+        <ul class="space-y-3 mb-10">
+          <li>✔ 10 Pages Website</li>
+          <li>✔ Custom Design</li>
+          <li>✔ WhatsApp Integration</li>
+          <li>✔ SEO Optimization</li>
+          <li>✔ 3 Months Support</li>
+        </ul>
+
+        <a href="#contact"
+           class="block text-center px-8 py-4 rounded-full bg-white text-indigo-600 font-semibold hover:scale-105 transition">
+          Get Started
+        </a>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="bg-white rounded-3xl shadow-xl p-12 border">
+        <h3 class="text-2xl font-bold mb-4">Premium</h3>
+        <p class="text-gray-600 mb-6">For enterprises & startups</p>
+        <div class="text-4xl font-black mb-6">₹39,999+</div>
+
+        <ul class="space-y-3 text-gray-600 mb-10">
+          <li>✔ Unlimited Pages</li>
+          <li>✔ Advanced Animations</li>
+          <li>✔ Admin Panel</li>
+          <li>✔ Performance Optimization</li>
+          <li>✔ 6 Months Support</li>
+        </ul>
+
+        <a href="#contact"
+           class="block text-center px-8 py-4 rounded-full bg-indigo-600 text-white font-semibold hover:scale-105 transition">
+          Get Started
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-36 bg-white">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <h2 class="text-4xl lg:text-5xl font-black text-center mb-20">
+      Frequently Asked Questions
+    </h2>
+
+    <div class="space-y-6">
+
+      <div class="border rounded-2xl">
+        <button class="faq-btn w-full text-left p-6 font-semibold">
+          How long does it take to build a website?
+        </button>
+        <div class="faq-content hidden p-6 text-gray-600">
+          Most websites are completed within 2–4 weeks depending on
+          requirements and complexity.
+        </div>
+      </div>
+
+      <div class="border rounded-2xl">
+        <button class="faq-btn w-full text-left p-6 font-semibold">
+          Do you provide maintenance support?
+        </button>
+        <div class="faq-content hidden p-6 text-gray-600">
+          Yes, we offer monthly and yearly maintenance plans with
+          continuous updates and support.
+        </div>
+      </div>
+
+      <div class="border rounded-2xl">
+        <button class="faq-btn w-full text-left p-6 font-semibold">
+          Is the website mobile responsive?
+        </button>
+        <div class="faq-content hidden p-6 text-gray-600">
+          Absolutely. All our websites are fully responsive across
+          mobile, tablet and desktop devices.
+        </div>
+      </div>
+
+      <div class="border rounded-2xl">
+        <button class="faq-btn w-full text-left p-6 font-semibold">
+          Can you integrate WhatsApp and payment gateways?
+        </button>
+        <div class="faq-content hidden p-6 text-gray-600">
+          Yes, we can integrate WhatsApp, Razorpay, Stripe and
+          other third-party services.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- CTA -->
+<section class="py-40 bg-indigo-600 text-white text-center">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-5xl font-black mb-6">
+      Ready to Start Your Project?
+    </h2>
+    <p class="text-lg opacity-90 mb-10">
+      Let’s build a website that grows your business and
+      delivers real results.
+    </p>
+
+    <a href="#contact"
+       class="inline-block px-12 py-5 bg-white text-indigo-600 font-bold rounded-full hover:scale-110 transition">
+      Contact Neurix
+    </a>
+  </div>
+</section>
+
+<!-- FAQ JS -->
+<script>
+document.querySelectorAll(".faq-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const content = btn.nextElementSibling;
+    content.classList.toggle("hidden");
+  });
+});
+</script>
+
+<!-- ===================== PART 5 END ===================== -->
+
+
+
+
+<!-- ===================== PART 6 START ===================== -->
+
+<!-- CONTACT -->
+<section id="contact" class="py-36 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-start">
+
+    <!-- CONTACT INFO -->
+    <div>
+      <h2 class="text-4xl lg:text-5xl font-black mb-6">
+        Get in Touch
+      </h2>
+      <p class="text-gray-600 mb-10 max-w-xl">
+        Have a project in mind or need a professional website?
+        Contact Neurix and let’s build something great together.
+      </p>
+
+      <div class="space-y-6 text-gray-700">
+        <div class="flex items-start gap-4">
+          <span class="text-2xl">📞</span>
+          <div>
+            <p class="font-semibold">Phone</p>
+            <p>+91 63985 28280</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <span class="text-2xl">📧</span>
+          <div>
+            <p class="font-semibold">Email</p>
+            <p>connect.neurix@outlook.com</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <span class="text-2xl">💬</span>
+          <div>
+            <p class="font-semibold">WhatsApp</p>
+            <p>+91 63985 28280</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <span class="text-2xl">📍</span>
+          <div>
+            <p class="font-semibold">Location</p>
+            <p>India</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT FORM -->
+
+
+<div class="bg-white p-12 rounded-3xl shadow-lg">
+  <h3 class="text-2xl font-bold mb-6">Send a Message</h3>
+
+  <form class="space-y-6" id="contactForm">
+
+    <input type="text" name="name" required placeholder="Your Name"
+      class="w-full border rounded-xl px-6 py-4 focus:ring-2 focus:ring-indigo-600">
+
+    <input type="email" name="email" required placeholder="Your Email"
+      class="w-full border rounded-xl px-6 py-4 focus:ring-2 focus:ring-indigo-600">
+
+    <input type="text" name="phone" required placeholder="Your Phone"
+      class="w-full border rounded-xl px-6 py-4 focus:ring-2 focus:ring-indigo-600">
+
+    <textarea rows="4" name="message" placeholder="Your Message"
+      class="w-full border rounded-xl px-6 py-4 focus:ring-2 focus:ring-indigo-600"></textarea>
+
+    <!-- BUTTON WITH SPINNER -->
+    <button id="submitBtn" type="submit"
+      class="w-full px-8 py-4 bg-indigo-600 text-white font-semibold rounded-full transition flex items-center justify-center gap-2">
+
+      <span id="btnText">Submit</span>
+
+      <!-- Spinner -->
+      <span id="spinner"
+        class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin">
+      </span>
+    </button>
+
+    <!-- STATUS MESSAGE -->
+    <p id="formStatus" class="text-center text-sm hidden"></p>
+
+  </form>
+</div>
+</section>
+<script>
+const form = document.getElementById("contactForm");
+const button = document.getElementById("submitBtn");
+const btnText = document.getElementById("btnText");
+const spinner = document.getElementById("spinner");
+const status = document.getElementById("formStatus");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  // LOADING UI
+  btnText.innerText = "Submitting";
+  spinner.classList.remove("hidden");
+  button.disabled = true;
+  button.classList.add("opacity-70");
+  status.classList.add("hidden");
+
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    phone: form.phone.value,
+    message: form.message.value
+  };
+
+  try {
+    const res = await fetch(
+      "https://script.google.com/macros/s/AKfycbz2lHkq34CryJkw9HYa464A5hkJ9U51_n73zVhD97vD-qLoSustziABGN5PO7b5yTv8/exec",
+      {
+        method: "POST",
+        body: JSON.stringify(data)
+      }
+    );
+
+    if (res.ok) {
+      // SUCCESS UI
+      status.innerText = "✅ Thank you! We’ll contact you shortly.";
+      status.className =
+        "text-center text-green-600 font-medium mt-4";
+
+      form.reset();
+    } else {
+      throw new Error("Submission failed");
+    }
+  } catch (err) {
+    // ERROR UI
+    status.innerText = "❌ Something went wrong. Please try again.";
+    status.className =
+      "text-center text-red-600 font-medium mt-4";
+  }
+
+  // RESET BUTTON
+  btnText.innerText = "Submit";
+  spinner.classList.add("hidden");
+  button.disabled = false;
+  button.classList.remove("opacity-70");
+});
+</script>
+
+
+<!-- MAP -->
+<section class="h-[500px]">
+  <iframe
+    src="https://www.google.com/maps?q=India&output=embed"
+    class="w-full h-full border-0"
+    loading="lazy">
+  </iframe>
+</section>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/916398528280"
+   target="_blank"
+   class="fixed bottom-6 right-6 z-50 bg-green-500 text-white px-5 py-4 rounded-full shadow-lg hover:scale-110 transition">
+  💬 WhatsApp
+</a>
+
+<!-- FOOTER -->
+<footer class="bg-white border-t py-24">
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-4 md:grid-cols-2 gap-12 text-sm text-gray-600">
+
+    <div>
+      <h3 class="font-black text-xl text-indigo-600 mb-4">Neurix</h3>
+      <p>
+        A GST & MSME registered digital agency delivering
+        scalable, secure and modern web solutions.
+      </p>
+    </div>
+
+    <div>
+      <h4 class="font-bold mb-4">Services</h4>
+      <ul class="space-y-2">
+        <li>Website Development</li>
+        <li>UI / UX Design</li>
+        <li>Custom Software</li>
+        <li>E-Commerce</li>
+        <li>Maintenance</li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="font-bold mb-4">Company</h4>
+      <ul class="space-y-2">
+        <li>About Us</li>
+        <li>Our Work</li>
+        <li>Pricing</li>
+        <li>Contact</li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="font-bold mb-4">Contact</h4>
+      <ul class="space-y-2">
+        <li>📞 +91 63985 28280</li>
+        <li>📧 connect.neurix@outlook.com</li>
+        <li>📍 India</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="text-center text-xs text-gray-500 mt-16">
+    © 2026 Neurix • GST & MSME Certified • All Rights Reserved
+  </div>
+</footer>
+
+<!-- ===================== PART 6 END ===================== -->
+
+</body>
+</html>

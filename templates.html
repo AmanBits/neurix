@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website Templates – Neurix</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { inter: ["Inter"] },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        font-family: Inter;
+      }
+
+      /* Soft animated background */
+      .bg-soft {
+        background: linear-gradient(120deg, #f8fafc, #eef2ff, #f0fdf4);
+        background-size: 300% 300%;
+        animation: bgMove 18s ease infinite;
+      }
+      @keyframes bgMove {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-soft text-gray-800">
+    <!-- NAV -->
+    <nav class="bg-white/80 backdrop-blur-lg border-b sticky top-0 z-50">
+      <div
+        class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center"
+      >
+        <a href="index.html" class="text-2xl font-black text-indigo-600">
+          Neurix
+        </a>
+        <div class="flex gap-6 text-sm font-semibold">
+          <a href="index.html" class="hover:text-indigo-600">Home</a>
+          <a href="templates.html" class="text-indigo-600">Templates</a>
+          <a href="index.html#contact" class="hover:text-indigo-600">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="pt-32 pb-24">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <span
+          class="inline-block mb-6 px-4 py-1 text-sm bg-indigo-100 text-indigo-600 rounded-full"
+        >
+          Ready-to-use Templates
+        </span>
+
+        <h1 class="text-4xl lg:text-6xl font-black mb-6">
+          Website Templates for<br />
+          <span class="text-indigo-600">Real Businesses</span>
+        </h1>
+
+        <p class="text-gray-600 max-w-3xl mx-auto text-lg">
+          Professionally designed website templates built with clean UI,
+          animations and responsive layouts. Save time and launch faster.
+        </p>
+      </div>
+    </section>
+
+    <!-- FILTER BAR -->
+    <section class="pb-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <div
+          class="bg-white rounded-3xl shadow p-8 grid lg:grid-cols-4 md:grid-cols-2 gap-6"
+        >
+          <!-- SEARCH -->
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search templates..."
+            class="border rounded-xl px-5 py-3 focus:ring-2 focus:ring-indigo-600"
+          />
+
+          <!-- CATEGORY -->
+          <select
+            id="categoryFilter"
+            class="border rounded-xl px-5 py-3 focus:ring-2 focus:ring-indigo-600"
+          >
+            <option value="all">All Categories</option>
+            <option value="business">Business</option>
+            <option value="portfolio">Portfolio</option>
+            <option value="landing">Landing Page</option>
+            <option value="ecommerce">E-commerce</option>
+            <option value="realestate">Real Estate</option>
+          </select>
+
+          <!-- PRICE -->
+          <select
+            id="priceFilter"
+            class="border rounded-xl px-5 py-3 focus:ring-2 focus:ring-indigo-600"
+          >
+            <option value="all">All Prices</option>
+            <option value="free">Free</option>
+            <option value="low">Under ₹999</option>
+            <option value="mid">₹1000 – ₹1999</option>
+          </select>
+
+          <!-- TECH -->
+          <select
+            id="techFilter"
+            class="border rounded-xl px-5 py-3 focus:ring-2 focus:ring-indigo-600"
+          >
+            <option value="all">All Tech</option>
+            <option value="html">HTML</option>
+            <option value="tailwind">Tailwind</option>
+            <option value="react">React</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEMPLATE GRID (EMPTY FOR NOW) -->
+    <section class="pb-40">
+      <div class="max-w-7xl mx-auto px-6">
+        <div
+          id="templateGrid"
+          class="grid lg:grid-cols-3 md:grid-cols-2 gap-12"
+        >
+          <!-- paste here -->
+          <!-- ===================== PART 2 START ===================== -->
+
+          <!-- TEMPLATE 1 -->
+          <div
+            class="template-card bg-white rounded-3xl shadow hover:shadow-2xl transition overflow-hidden"
+            data-category="business"
+            data-price="999"
+            data-tech="html tailwind"
+          >
+            <div class="relative">
+              <img
+                src="./assets/real-estate/elitehomesdemo/images/hero.png"
+                class="h-56 w-full object-cover"
+              />
+              <span
+                class="absolute top-4 left-4 px-3 py-1 text-xs bg-indigo-600 text-white rounded-full"
+              >
+                Popular
+              </span>
+            </div>
+
+            <div class="p-8">
+              <h3 class="font-bold text-xl mb-2">
+                Real Estate Website Template
+              </h3>
+              <!-- RATING + BADGE -->
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-1 text-yellow-400 text-sm">
+                  ★★★★☆
+                  <span class="text-gray-500 text-xs">(4.8)</span>
+                </div>
+
+                <span
+                  class="text-xs px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full"
+                >
+                  Best Seller
+                </span>
+              </div>
+              <a
+                href="templates/demo/elitehomesdemo.html"
+                target="_blank"
+                class="text-sm font-semibold text-indigo-600"
+              >
+                Live Demo
+              </a>
+
+              <p class="text-gray-600 text-sm mb-4">
+                Professional multi-page business website with clean UI and
+                animations.
+              </p>
+
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs px-3 py-1 bg-gray-100 rounded-full"
+                  >HTML</span
+                >
+                <span class="text-xs px-3 py-1 bg-gray-100 rounded-full"
+                  >Tailwind</span
+                >
+                <span class="text-xs px-3 py-1 bg-gray-100 rounded-full"
+                  >Responsive</span
+                >
+              </div>
+
+              <ul class="text-sm text-gray-500 mb-6 list-disc pl-5">
+                <li>5 Pages</li>
+                <li>Modern layout</li>
+                <li>Contact form</li>
+              </ul>
+
+              <div class="flex justify-between items-center">
+                <span class="text-lg font-black text-indigo-600">₹999</span>
+                <div class="flex gap-3">
+                  <button
+                    onclick="openModal(this)"
+                    data-title="Business Website Template"
+                    data-desc="Professional multi-page website for companies and agencies."
+                    data-price="₹999"
+                    data-images="
+    ./assets/real-estate/elitehomesdemo/images/hero.png,
+    ./assets/real-estate/elitehomesdemo/images/filter.png,
+ ./assets/real-estate/elitehomesdemo/images/insights.png,
+    ./assets/real-estate/elitehomesdemo/images/virtual-tour.png,
+    ./assets/real-estate/elitehomesdemo/images/category.png,
+    ./assets/real-estate/elitehomesdemo/images/gallery.png,
+     ./assets/real-estate/elitehomesdemo/images/footer.png
+  "
+                    data-features="Home Page,Services Section,Contact Form,Responsive Layout"
+                    data-buy="https://wa.me/919999999999?text=I want to buy Business Website Template"
+                  >
+                    View Details
+                  </button>
+
+                  <!-- <a
+                    href="https://wa.me/919999999999?text=I want to buy Business Website Template"
+                    class="px-4 py-2 bg-indigo-600 text-white rounded-full text-sm"
+                  >
+                    Buy
+                  </a> -->
+
+                  <button
+                    onclick="openBuyModal('Business Website Template', 1)"
+                    class="px-4 py-2 bg-indigo-600 text-white rounded-full text-sm"
+                  >
+                    Buy
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TEMPLATE 2 -->
+          <div
+            class="template-card bg-white rounded-3xl shadow hover:shadow-2xl transition overflow-hidden"
+            data-category="portfolio"
+            data-price="799"
+            data-tech="html tailwind"
+          >
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+                class="h-56 w-full object-cover"
+              />
+              <span
+                class="absolute top-4 left-4 px-3 py-1 text-xs bg-green-500 text-white rounded-full"
+              >
+                New
+              </span>
+            </div>
+            <div class="p-8">
+              <h3 class="font-bold text-xl mb-2">Developer Portfolio</h3>
+              <!-- RATING + BADGE -->
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-1 text-yellow-400 text-sm">
+                  ★★★★☆
+                  <span class="text-gray-500 text-xs">(4.8)</span>
+                </div>
+
+                <span
+                  class="text-xs px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full"
+                >
+                  Best Seller
+                </span>
+              </div>
+
+              <p class="text-gray-600 text-sm mb-4">
+                Personal portfolio template for developers and designers.
+              </p>
+
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs px-3 py-1 bg-gray-100 rounded-full"
+                  >HTML</span
+                >
+                <span class="text-xs px-3 py-1 bg-gray-100 rounded-full"
+                  >Tailwind</span
+                >
+              </div>
+
+              <ul class="text-sm text-gray-500 mb-6 list-disc pl-5">
+                <li>Single page</li>
+                <li>Project showcase</li>
+                <li>Contact section</li>
+              </ul>
+
+              <div class="flex justify-between items-center">
+                <span class="text-lg font-black text-indigo-600">₹799</span>
+                <div class="flex gap-3">
+                  <button
+                    onclick="openModal(this)"
+                    class="text-sm font-semibold text-indigo-600 hover:underline"
+                    data-title="Business Website Template"
+                    data-desc="Professional multi-page website for companies and agencies."
+                    data-price="₹999"
+                    data-image="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+                    data-features="5 Pages,Responsive Design,Contact Form,Clean UI,Easy Customization"
+                    data-buy="https://wa.me/919999999999?text=I want to buy Business Website Template"
+                  >
+                    View Details
+                  </button>
+                  <a
+                    href="https://wa.me/919999999999?text=I want to buy Developer Portfolio Template"
+                    class="px-4 py-2 bg-indigo-600 text-white rounded-full text-sm"
+                  >
+                    Buy
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TEMPLATE 3 -->
+          <div
+            class="template-card bg-white rounded-3xl shadow hover:shadow-2xl transition overflow-hidden"
+            data-category="landing"
+            data-price="0"
+            data-tech="html tailwind"
+          >
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1509395176047-4a66953fd231"
+                class="h-56 w-full object-cover"
+              />
+              <span
+                class="absolute top-4 left-4 px-3 py-1 text-xs bg-gray-800 text-white rounded-full"
+              >
+                Free
+              </span>
+            </div>
+            <div class="p-8">
+              <h3 class="font-bold text-xl mb-2">Landing Page Template</h3>
+              <!-- RATING + BADGE -->
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-1 text-yellow-400 text-sm">
+                  ★★★★☆
+                  <span class="text-gray-500 text-xs">(4.8)</span>
+                </div>
+
+                <span
+                  class="text-xs px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full"
+                >
+                  Best Seller
+                </span>
+              </div>
+
+              <p class="text-gray-600 text-sm mb-4">
+                High-conversion landing page for marketing campaigns.
+              </p>
+
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs px-3 py-1 bg-gray-100 rounded-full"
+                  >HTML</span
+                >
+                <span class="text-xs px-3 py-1 bg-gray-100 rounded-full"
+                  >Tailwind</span
+                >
+              </div>
+
+              <ul class="text-sm text-gray-500 mb-6 list-disc pl-5">
+                <li>Hero + CTA</li>
+                <li>Email capture</li>
+                <li>Fast loading</li>
+              </ul>
+
+              <div class="flex justify-between items-center">
+                <span class="text-lg font-black text-green-600">Free</span>
+                <div class="flex gap-3">
+                  <button
+                    onclick="openModal(this)"
+                    class="text-sm font-semibold text-indigo-600 hover:underline"
+                    data-title="Business Website Template"
+                    data-desc="Professional multi-page website for companies and agencies."
+                    data-price="₹999"
+                    data-image="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+                    data-features="5 Pages,Responsive Design,Contact Form,Clean UI,Easy Customization"
+                    data-buy="https://wa.me/919999999999?text=I want to buy Business Website Template"
+                  >
+                    View Details
+                  </button>
+                  <a
+                    href="#"
+                    class="px-4 py-2 bg-gray-800 text-white rounded-full text-sm"
+                  >
+                    Download
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===================== PART 2 END ===================== -->
+        </div>
+      </div>
+    </section>
+
+    <!-- <iframe
+  src="templates/demo/elitehomesdemo.html"
+  class="w-full h-[600px] rounded-2xl border"
+  sandbox="allow-scripts allow-same-origin">
+</iframe> -->
+
+    <!-- ===================== LICENSE & SUPPORT ===================== -->
+    <section class="py-36 bg-white">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-4xl font-black text-center mb-12">License & Usage</h2>
+
+        <div class="grid md:grid-cols-3 gap-10">
+          <div class="bg-gray-50 rounded-3xl p-8 shadow">
+            <h3 class="font-bold text-lg mb-3">Single Website License</h3>
+            <p class="text-gray-600 text-sm">
+              Use the template for <strong>one website</strong>. Ideal for
+              individual clients or small businesses.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-3xl p-8 shadow">
+            <h3 class="font-bold text-lg mb-3">Commercial Use</h3>
+            <p class="text-gray-600 text-sm">
+              You are allowed to use the template for
+              <strong>commercial projects</strong>, including client websites.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-3xl p-8 shadow">
+            <h3 class="font-bold text-lg mb-3">Support & Updates</h3>
+            <p class="text-gray-600 text-sm">
+              Includes <strong>free updates</strong> and basic support for setup
+              and usage guidance.
+            </p>
+          </div>
+        </div>
+
+        <p class="text-center text-sm text-gray-500 mt-10">
+          Templates are delivered as ZIP files. Reselling or redistribution is
+          not allowed.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== TEMPLATES FAQ ===================== -->
+    <section class="py-36 bg-gray-50">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-4xl font-black text-center mb-14">Templates FAQ</h2>
+
+        <div class="space-y-6">
+          <div class="bg-white p-6 rounded-2xl shadow">
+            <h4 class="font-semibold mb-2">Do I get the full source code?</h4>
+            <p class="text-gray-600 text-sm">
+              Yes, you receive the complete source code files that you can
+              customize as per your needs.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow">
+            <h4 class="font-semibold mb-2">
+              Can I use the template for client projects?
+            </h4>
+            <p class="text-gray-600 text-sm">
+              Yes, all paid templates allow commercial usage for client
+              websites.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow">
+            <h4 class="font-semibold mb-2">Is hosting included?</h4>
+            <p class="text-gray-600 text-sm">
+              No. Templates are frontend code only. Hosting and domain must be
+              arranged separately.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow">
+            <h4 class="font-semibold mb-2">
+              How will I receive the template after payment?
+            </h4>
+            <p class="text-gray-600 text-sm">
+              After payment confirmation, you will receive a download link via
+              WhatsApp or email.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PART 4 : TEMPLATE MODAL ===================== -->
+    <div
+      id="templateModal"
+      class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50"
+    >
+      <div
+        class="bg-white max-w-3xl w-full mx-6 rounded-3xl shadow-2xl overflow-hidden relative"
+      >
+        <!-- CLOSE -->
+        <button
+          onclick="closeModal()"
+          class="absolute top-4 right-4 text-gray-500 hover:text-black text-xl"
+        >
+          ✕
+        </button>
+
+        <!-- MAIN IMAGE -->
+        <img
+          id="modalMainImage"
+          src=""
+          class="w-full h-64 object-cover transition rounded-t-3xl"
+        />
+
+        <!-- THUMBNAILS -->
+        <div
+          id="modalThumbnails"
+          class="flex gap-3 p-4 overflow-x-auto bg-gray-50"
+        >
+          <!-- thumbnails injected by JS -->
+        </div>
+
+        <!-- CONTENT -->
+        <div class="p-8 space-y-6">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 id="modalTitle" class="text-2xl font-black"></h3>
+              <p id="modalDesc" class="text-gray-600 mt-1"></p>
+            </div>
+            <span
+              id="modalPrice"
+              class="text-xl font-black text-indigo-600"
+            ></span>
+          </div>
+
+          <!-- FEATURES -->
+          <ul
+            id="modalFeatures"
+            class="grid grid-cols-2 gap-3 text-sm text-gray-600 list-disc pl-5"
+          ></ul>
+
+          <!-- ACTIONS -->
+          <div class="flex gap-4 pt-4 flex-wrap">
+            <a
+              id="modalBuy"
+              href="#"
+              target="_blank"
+              class="px-6 py-3 bg-indigo-600 text-white rounded-full font-semibold"
+            >
+              Buy Now
+            </a>
+            <button
+              onclick="closeModal()"
+              class="px-6 py-3 border rounded-full font-semibold"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ===================== PART 4 END ===================== -->
+
+    <!-- BASIC FILTER JS (WILL EXPAND LATER) -->
+    <script>
+      const searchInput = document.getElementById("searchInput");
+      const categoryFilter = document.getElementById("categoryFilter");
+      const priceFilter = document.getElementById("priceFilter");
+      const techFilter = document.getElementById("techFilter");
+
+      [searchInput, categoryFilter, priceFilter, techFilter].forEach((el) => {
+        el.addEventListener("change", () => {
+          // logic will be expanded in next parts
+          console.log("Filtering...");
+        });
+      });
+
+      const templates = document.querySelectorAll(".template-card");
+
+      function filterTemplates() {
+        const searchValue = searchInput.value.toLowerCase();
+        const categoryValue = categoryFilter.value;
+        const priceValue = priceFilter.value;
+        const techValue = techFilter.value;
+
+        templates.forEach((card) => {
+          const title = card.querySelector("h3").innerText.toLowerCase();
+          const category = card.dataset.category;
+          const price = parseInt(card.dataset.price);
+          const tech = card.dataset.tech;
+
+          let visible = true;
+
+          // SEARCH FILTER
+          if (!title.includes(searchValue)) {
+            visible = false;
+          }
+
+          // CATEGORY FILTER
+          if (categoryValue !== "all" && category !== categoryValue) {
+            visible = false;
+          }
+
+          // TECH FILTER
+          if (techValue !== "all" && !tech.includes(techValue)) {
+            visible = false;
+          }
+
+          // PRICE FILTER
+          if (priceValue === "free" && price !== 0) {
+            visible = false;
+          }
+
+          if (priceValue === "low" && (price === 0 || price > 999)) {
+            visible = false;
+          }
+
+          if (priceValue === "mid" && (price < 1000 || price > 1999)) {
+            visible = false;
+          }
+
+          // APPLY VISIBILITY
+          card.style.display = visible ? "block" : "none";
+        });
+      }
+
+      // EVENT LISTENERS
+      searchInput.addEventListener("keyup", filterTemplates);
+      categoryFilter.addEventListener("change", filterTemplates);
+      priceFilter.addEventListener("change", filterTemplates);
+      techFilter.addEventListener("change", filterTemplates);
+
+      function openModal(btn) {
+        document.getElementById("modalTitle").innerText = btn.dataset.title;
+        document.getElementById("modalDesc").innerText = btn.dataset.desc;
+        document.getElementById("modalPrice").innerText = btn.dataset.price;
+        document.getElementById("modalBuy").href = btn.dataset.buy;
+
+        // FEATURES
+        const featuresEl = document.getElementById("modalFeatures");
+        featuresEl.innerHTML = "";
+        btn.dataset.features.split(",").forEach((f) => {
+          const li = document.createElement("li");
+          li.innerText = f.trim();
+          featuresEl.appendChild(li);
+        });
+
+        // IMAGE GALLERY
+        const images = btn.dataset.images.split(",");
+        const mainImage = document.getElementById("modalMainImage");
+        const thumbs = document.getElementById("modalThumbnails");
+
+        mainImage.src = images[0].trim();
+        thumbs.innerHTML = "";
+
+        images.forEach((img, index) => {
+          const thumb = document.createElement("img");
+          thumb.src = img.trim();
+          thumb.className =
+            "h-20 w-32 object-cover rounded-xl cursor-pointer border-2 " +
+            (index === 0 ? "border-indigo-600" : "border-transparent");
+
+          thumb.onclick = () => {
+            mainImage.src = img.trim();
+            [...thumbs.children].forEach((t) =>
+              t.classList.remove("border-indigo-600"),
+            );
+            thumb.classList.add("border-indigo-600");
+          };
+
+          thumbs.appendChild(thumb);
+        });
+
+        document.getElementById("templateModal").classList.remove("hidden");
+        document.getElementById("templateModal").classList.add("flex");
+      }
+
+      function closeModal() {
+        document.getElementById("templateModal").classList.add("hidden");
+        document.getElementById("templateModal").classList.remove("flex");
+      }
+      function closeModal() {
+        document.getElementById("templateModal").classList.add("hidden");
+        document.getElementById("templateModal").classList.remove("flex");
+      }
+    </script>
+
+    <!-- ===================== BUY MODAL ===================== -->
+    <div
+      id="buyModal"
+      class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50"
+    >
+      <div
+        class="bg-white w-full max-w-md mx-6 rounded-3xl shadow-2xl p-8 relative"
+      >
+        <!-- CLOSE -->
+        <button
+          onclick="closeBuyModal()"
+          class="absolute top-4 right-4 text-gray-500 hover:text-black text-xl"
+        >
+          ✕
+        </button>
+
+        <h3 class="text-2xl font-black mb-2">Buy Template</h3>
+        <p id="buyTemplateName" class="text-gray-600 mb-6">Template name</p>
+
+        <!-- EMAIL INPUT -->
+        <input
+          type="email"
+          id="buyerEmail"
+          placeholder="Enter your email"
+          required
+          class="border px-4 py-3 rounded-xl w-full mb-4 focus:ring-2 focus:ring-indigo-600"
+        />
+
+        <!-- PAY BUTTON -->
+        <button
+          id="payBtn"
+          class="w-full px-6 py-3 bg-indigo-600 text-white rounded-full font-semibold hover:opacity-90"
+        >
+          Pay ₹999
+        </button>
+
+        <p class="text-xs text-gray-500 mt-4 text-center">
+          You will receive the download link on email after payment.
+        </p>
+      </div>
+    </div>
+    <!-- ===================== BUY MODAL END ===================== -->
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script>
+      let selectedTemplate = "";
+      let selectedAmount = 0;
+
+      // OPEN MODAL
+      function openBuyModal(templateName, price) {
+        selectedTemplate = templateName;
+        selectedAmount = 1; //price;
+
+        document.getElementById("buyTemplateName").innerText = templateName;
+        document.getElementById("payBtn").innerText = `Pay ₹${price}`;
+
+        document.getElementById("buyModal").classList.remove("hidden");
+        document.getElementById("buyModal").classList.add("flex");
+      }
+
+      // CLOSE MODAL
+      function closeBuyModal() {
+        document.getElementById("buyModal").classList.add("hidden");
+        document.getElementById("buyModal").classList.remove("flex");
+      }
+
+      // PAY BUTTON CLICK
+      document.getElementById("payBtn").onclick = function () {
+        const email = document.getElementById("buyerEmail").value;
+
+        if (!email) {
+          alert("Please enter your email");
+          return;
+        }
+
+        const options = {
+          key: "rzp_test_SDGKPgIVnwjLmP",
+          amount: selectedAmount * 100, // convert to paise
+          currency: "INR",
+          name: "Neurix Templates",
+          description: selectedTemplate,
+          prefill: { email: email },
+
+          handler: function (response) {
+            // SEND DATA TO APPS SCRIPT
+            fetch(
+              "https://script.google.com/macros/s/AKfycbxeF7u5DaoNIoGcwKi8lRWNis0hRXU_MizwlzWqXTWOJrqsOyDa1aUTXSN_iFEawrIV/exec",
+              {
+                method: "POST",
+                body: JSON.stringify({
+                  email: email,
+                  template: selectedTemplate,
+                  paymentId: response.razorpay_payment_id,
+                  expectedAmount: selectedAmount,
+                }),
+              },
+            )
+              .then((res) => res.text())
+              .then((result) => {
+                if (result === "success") {
+                  alert("✅ Payment verified. Check your email.");
+                } else {
+                  alert("❌ Payment amount mismatch. Contact support.");
+                }
+              });
+
+            closeBuyModal();
+          },
+        };
+
+        new Razorpay(options).open();
+      };
+    </script>
+  </body>
+</html>
