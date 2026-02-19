@@ -749,8 +749,7 @@ https://amanbits.github.io/neurix/assets/real-estate/elitehomesdemo/images/galle
     <!-- ===================== BUY MODAL END ===================== -->
 
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
-   <script>
+<script>
   let selectedTemplate = "";
 
   function openBuyModal(templateName) {
@@ -765,6 +764,7 @@ https://amanbits.github.io/neurix/assets/real-estate/elitehomesdemo/images/galle
 
   document.getElementById("payBtn").onclick = function () {
     const email = document.getElementById("buyerEmail").value;
+
     if (!email) {
       alert("Please enter your email");
       return;
@@ -772,21 +772,34 @@ https://amanbits.github.io/neurix/assets/real-estate/elitehomesdemo/images/galle
 
     const options = {
       key: "rzp_test_SHx7GSBqyhP495", // TEST KEY
-      amount: 100, // ₹1 = 100 paise (FIXED)
+      amount: 100, // ₹1 = 100 paise
       currency: "INR",
       name: "Neurix Templates",
       description: selectedTemplate,
-      prefill: { email },
+      prefill: { email: email },
 
       handler: function (response) {
-        fetch("https://script.google.com/macros/s/AKfycbxeF7u5DaoNIoGcwKi8lRWNis0hRXU_MizwlzWqXTWOJrqsOyDa1aUTXSN_iFEawrIV/exec", {
-          method: "POST",
-          body: JSON.stringify({
-            email: email,
-            template: selectedTemplate,
-            paymentId: response.razorpay_payment_id
-          })
-        })
+        console.log("Razorpay response:", response);
+
+        if (!response.razorpay_payment_id) {
+          alert("Payment ID missing. Please retry.");
+          return;
+        }
+
+        fetch(
+          "https://script.google.com/macros/s/AKfycbxeF7u5DaoNIoGcwKi8lRWNis0hRXU_MizwlzWqXTWOJrqsOyDa1aUTXSN_iFEawrIV/exec",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              email: email,
+              template: selectedTemplate,
+              paymentId: response.razorpay_payment_id
+            })
+          }
+        )
         .then(res => res.text())
         .then(result => {
           if (result === "success") {
@@ -798,12 +811,14 @@ https://amanbits.github.io/neurix/assets/real-estate/elitehomesdemo/images/galle
       }
     };
 
-    new Razorpay(options).open();
+    const rzp = new Razorpay(options);
+    rzp.open();
   };
 </script>
 
   </body>
 </html>
+
 
 
 
