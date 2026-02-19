@@ -750,77 +750,61 @@ https://amanbits.github.io/neurix/assets/real-estate/elitehomesdemo/images/galle
 
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-    <script>
-      let selectedTemplate = "";
-      let selectedAmount = 0;
+   <script>
+  let selectedTemplate = "";
 
-      // OPEN MODAL
-      function openBuyModal(templateName, price) {
-        selectedTemplate = templateName;
-        selectedAmount = 1; //price;
+  function openBuyModal(templateName) {
+    selectedTemplate = templateName;
 
-        document.getElementById("buyTemplateName").innerText = templateName;
-        document.getElementById("payBtn").innerText = `Pay ₹${price}`;
+    document.getElementById("buyTemplateName").innerText = templateName;
+    document.getElementById("payBtn").innerText = "Pay ₹1";
 
-        document.getElementById("buyModal").classList.remove("hidden");
-        document.getElementById("buyModal").classList.add("flex");
+    document.getElementById("buyModal").classList.remove("hidden");
+    document.getElementById("buyModal").classList.add("flex");
+  }
+
+  document.getElementById("payBtn").onclick = function () {
+    const email = document.getElementById("buyerEmail").value;
+    if (!email) {
+      alert("Please enter your email");
+      return;
+    }
+
+    const options = {
+      key: "rzp_test_SDGKPgIVnwjLmP", // TEST KEY
+      amount: 100, // ₹1 = 100 paise (FIXED)
+      currency: "INR",
+      name: "Neurix Templates",
+      description: selectedTemplate,
+      prefill: { email },
+
+      handler: function (response) {
+        fetch("YOUR_APPS_SCRIPT_URL", {
+          method: "POST",
+          body: JSON.stringify({
+            email: email,
+            template: selectedTemplate,
+            paymentId: response.razorpay_payment_id
+          })
+        })
+        .then(res => res.text())
+        .then(result => {
+          if (result === "success") {
+            alert("✅ Payment verified. Check your email.");
+          } else {
+            alert("❌ Payment verification failed.");
+          }
+        });
       }
+    };
 
-      // CLOSE MODAL
-      function closeBuyModal() {
-        document.getElementById("buyModal").classList.add("hidden");
-        document.getElementById("buyModal").classList.remove("flex");
-      }
+    new Razorpay(options).open();
+  };
+</script>
 
-      // PAY BUTTON CLICK
-      document.getElementById("payBtn").onclick = function () {
-        const email = document.getElementById("buyerEmail").value;
-
-        if (!email) {
-          alert("Please enter your email");
-          return;
-        }
-
-        const options = {
-          key: "rzp_test_SDGKPgIVnwjLmP",
-          amount: selectedAmount * 100, // convert to paise
-          currency: "INR",
-          name: "Neurix Templates",
-          description: selectedTemplate,
-          prefill: { email: email },
-
-          handler: function (response) {
-            // SEND DATA TO APPS SCRIPT
-            fetch(
-              "https://script.google.com/macros/s/AKfycbxeF7u5DaoNIoGcwKi8lRWNis0hRXU_MizwlzWqXTWOJrqsOyDa1aUTXSN_iFEawrIV/exec",
-              {
-                method: "POST",
-                body: JSON.stringify({
-                  email: email,
-                  template: selectedTemplate,
-                  paymentId: response.razorpay_payment_id,
-                  expectedAmount: selectedAmount,
-                }),
-              },
-            )
-              .then((res) => res.text())
-              .then((result) => {
-                if (result === "success") {
-                  alert("✅ Payment verified. Check your email.");
-                } else {
-                  alert("❌ Payment amount mismatch. Contact support.");
-                }
-              });
-
-            closeBuyModal();
-          },
-        };
-
-        new Razorpay(options).open();
-      };
-    </script>
   </body>
 </html>
+
 
 
 
